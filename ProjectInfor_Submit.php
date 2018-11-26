@@ -24,9 +24,11 @@ if ($_FILES["pic"]["size"] > 500000) {
 //save the picture to the server
 if ($uploadOk == 1){
     if (move_uploaded_file($_FILES["pic"]["tmp_name"], $target_file_pic)) {
-        echo "The project picture ". basename( $_FILES["pic"]["name"]). " has been uploaded.";
+        echo "The project picture ". basename( $_FILES["pic"]["name"]). " has been uploaded. 
+        ";
     } else {
-        echo "Sorry, there was an error uploading the project picture.";
+        echo "Upload failed: ". $_FILES["file"]["error"]." 
+        ";
     }
 }
 
