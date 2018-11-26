@@ -33,7 +33,7 @@ if ($conn->connect_error) {
         echo $sql;
         printf("Error: %s\n", mysqli_error($conn));
     } else {
-        if (mysqli_num_rows($result) < 1) {
+        if ($result->num_rows < 1) {
             $projects = "no any ".$title." project currently ";
         } else {
 

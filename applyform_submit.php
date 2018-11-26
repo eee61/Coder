@@ -45,7 +45,7 @@ $excel -> setActiveSheetIndex(0)
     -> setCellValue('M2',$_POST['otherskills'])
     ;
 
-$target_dir = "attachments/";
+$target_dir = "attachments/Applicants";
 $target_file_applyform = "Coder_ApplicationForm_".$_POST['sid']."_".$_POST['firstname']."_".$_POST['lastname'].".xlsx";
 /* remove it, now won't upload until save to the database
 //write the result to a file
@@ -60,11 +60,11 @@ $file->save($target_dir.$target_file_applyform);
 $target_file_cv = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file_cv,PATHINFO_EXTENSION));
-// Check if file already exists
+/* Check if file already exists
 if (file_exists($target_file_cv)) {
     //echo "Sorry, file already exists.";
     $uploadOk = 0;
-}
+}*/
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
     echo "Sorry, your file is too large.";

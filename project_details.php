@@ -29,6 +29,12 @@ $project_pic='';
 $project_skills='';
 $project_team='';
 
+if (!$result) {
+    echo $sql;
+    printf("Error: %s\n", mysqli_error($conn));
+    exit();
+}
+
 while ($row = mysqli_fetch_array($result)) { //万一有多行数据 则默认取最后一行的
     $project_name = $row['Name'];
     $project_start= $row['StartDate'];
@@ -38,15 +44,29 @@ while ($row = mysqli_fetch_array($result)) { //万一有多行数据 则默认�
 }
 
 //read and display the project required skills
-$sql_skills = "SELECT skills.Name FROM projectskill LEFT JOIN skills ON projectskill.SkillID=skills.ID WHERE projectskill.ProjectID = ".$_GET['pid'];
+$sql_skills = "SELECT Skills.Name FROM ProjectSkill LEFT JOIN Skills ON ProjectSkill.SkillID=Skills.ID WHERE ProjectSkill.ProjectID = ".$_GET['pid'];
 $result_skills = mysqli_query($conn, $sql_skills);
+
+if (!$result_skills) {
+    echo $sql_skills;
+    printf("Error: %s\n", mysqli_error($conn));
+    exit();
+}
+
 while ($row = mysqli_fetch_array($result_skills)) {
     $project_skills.=$row['Name'].'. ';
 }
 
 //read and display the project members
-$sql_mem = "SELECT volunteer.FirstName, volunteer.LastName  FROM projectteam LEFT JOIN volunteer ON projectteam.VolunteerID=volunteer.StudentID WHERE projectteam.ProjectID = ".$_GET['pid'];
+$sql_mem = "SELECT Volunteer.FirstName, Volunteer.LastName  FROM ProjectTeam LEFT JOIN Volunteer ON ProjectTeam.VolunteerID=Volunteer.StudentID WHERE ProjectTeam.ProjectID = ".$_GET['pid'];
 $result_mem = mysqli_query($conn, $sql_mem);
+
+if (!$result_mem) {
+    echo $sql_mem;
+    printf("Error: %s\n", mysqli_error($conn));
+    exit();
+}
+
 while ($row = mysqli_fetch_array($result_mem)) {
     $project_team.=$row['FirstName'].' '.$row['LastName'].'. ';
 }
