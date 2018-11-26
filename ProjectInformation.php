@@ -82,7 +82,7 @@ $conn->close();
                             <td><input type="date" name="EndDate" value = <?php echo date("Y-m-d") ?> ></td>
                         </tr>
                         <tr style="background-color: white" valign="top">
-                            <td colspan="2">Programming Skills:<br>
+                            <td colspan="2">Programming Skills Required:<br>
                                 <table>
                                     <?php echo $skills; ?>
                                     <?php echo $skill_table; ?>

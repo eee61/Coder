@@ -23,7 +23,7 @@ if ($_FILES["pic"]["size"] > 500000) {
 
 //save the picture to the server
 if ($uploadOk == 1){
-    if (move_uploaded_file('','',$_FILES["pic"]["tmp_name"], )) {
+    if (move_uploaded_file($_FILES["pic"]["tmp_name"], $target_file_pic)) {
         echo "The project picture ". basename( $_FILES["pic"]["name"]). " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading the project picture.";
@@ -73,7 +73,7 @@ if(isset($_POST['skills'])){
 //echo 'sql:'.$sql_insertProjectSkills; //test code
 
 $insertsql=$sql_insertProject.$pid.$sql_insertProjectSkills;
-echo 'sql:'. $insertsql; //test code
+//echo 'sql:'. $insertsql; //test code
 $result1 = $conn->multi_query( $insertsql); //if only insert one record, use: $conn->query( $insertsql)
 //$result2 = $conn->query( $sql_insertApplicantProjects);
 //$result_prj = $conn->query( $sql_insertApplicantSkills);
